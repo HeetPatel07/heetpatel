@@ -1,10 +1,93 @@
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import githubIcon from "./assets/icons/github.svg";
 import mailIcon from "./assets/icons/minutemailer.svg";
-import linkedinIcon from "./assets/icons/linkedin.svg"
+import linkedinIcon from "./assets/icons/linkedin.svg";
 
 
 function App() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isTechVisible, setIsTechVisible] = useState(false);
+  const techRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Toggle visibility based on intersection
+        setIsTechVisible(entry.isIntersecting);
+      },
+      { threshold: 0.15 } // Trigger when 15% of the section is visible
+    );
+
+    if (techRef.current) observer.observe(techRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Animation for Projects Timeline
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show-project");
+          }
+        });
+      },
+      { threshold: 0.1 } // Trigger when 10% of the item is visible
+    );
+
+    const projectRows = document.querySelectorAll(".timeline-row");
+    projectRows.forEach((row) => observer.observe(row));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    try {
+      const response = await fetch("https://formspree.io/f/mjgbvokq", {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        form.reset();
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
+  const techStack = [
+    { name: "Java", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/java.svg" },
+    { name: "Python", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" },
+    { name: "JavaScript", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg" },
+    { name: "C", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/c.svg" },
+    { name: "C++", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cplusplus.svg" },
+    { name: "R", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/r.svg" },
+    { name: "Bash", type: "Scripting", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/gnubash.svg" },
+    { name: "React", type: "Frontend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/react.svg" },
+    { name: "Flask", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/flask.svg" },
+    { name: "Node.js", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nodedotjs.svg" },
+    { name: "Spring Boot", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/springboot.svg" },
+    { name: "Django", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/django.svg" },
+    { name: "Azure", type: "Cloud", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftazure.svg" },
+    { name: "AWS", type: "Cloud", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonaws.svg" },
+    { name: "Docker", type: "DevOps", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg" },
+    { name: "Kubernetes", type: "DevOps", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kubernetes.svg" },
+    { name: "SQL", type: "Database", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mysql.svg" },
+    { name: "MongoDB", type: "Database", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mongodb.svg" },
+    { name: "Power BI", type: "Analytics", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftpowerbi.svg" },
+    { name: "IBM SPSS", type: "Analytics", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/ibm.svg" },
+  ];
+
   return (
   
 <>
@@ -101,6 +184,14 @@ function App() {
                   <span className="token-property">location</span>{" "}
                   <span className="token-operator">=</span>{" "}
                   <span className="token-string">"Winnipeg, Canada"</span>
+                  <span className="token-punctuation">;</span>
+
+                  {"\n    "}
+                  <span className="token-keyword">this</span>
+                  <span className="token-operator">.</span>
+                  <span className="token-property">email</span>{" "}
+                  <span className="token-operator">=</span>{" "}
+                  <span className="token-string">"heet.patel1@umanitoba.ca"</span>
                   <span className="token-punctuation">;</span>
 
                   {"\n    "}
@@ -220,7 +311,9 @@ function App() {
               </a>
 
               <a
-                href="mailto:heet.patel1@umanitoba.ca"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=heet.patel1@umanitoba.ca"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="social-box"
                 aria-label="Email"
               >
@@ -233,9 +326,18 @@ function App() {
         </div>
       </section>
 
-      <section id="tech">
-        <div className="tech-placeholder">
-          {/* Tech stack coming soon */}
+      <section id="techstack" className="tech-section" ref={techRef}>
+        <div className={`tech-box ${isTechVisible ? "in-view" : ""}`}>
+          <h2>Tech Stack</h2>
+          <div className="tech-grid">
+            {techStack.map((tech, index) => (
+              <div className="tech-card" key={index} style={{ animationDelay: `${index * 100}ms` }}>
+                <img src={tech.url} alt={tech.name} className="tech-icon" />
+                <span className="tech-name">{tech.name}</span>
+                <span className="tech-type">{tech.type}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -418,8 +520,42 @@ function App() {
 
 
       <section id="contact">
-          <div className="contact-placeholder"></div>
-        </section>
+        <div className="contact-container">
+          <h2>Get In Touch</h2>
+          {isSubmitted ? (
+            <div className="thank-you-message">
+              <h3>Thank You!</h3>
+              <p>I will get back to you soon.</p>
+            </div>
+          ) : (
+            <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="name">Your Name<span className="required">*</span></label>
+              <input type="text" id="name" name="name" required placeholder="Enter your name" />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Email<span className="required">*</span></label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                placeholder="Enter your email" 
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="How can I help you?"></textarea>
+            </div>
+
+            <button type="submit" className="btn btn-primary">Send Message</button>
+          </form>
+          )}
+        </div>
+      </section>
 
     </div>
 

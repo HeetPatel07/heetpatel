@@ -41,3 +41,201 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* ========================= */
+/* CONTACT FORM */
+/* ========================= */
+#contact {
+  margin: 140px auto 100px;
+  max-width: 700px;
+  padding: 0 20px;
+}
+
+.contact-container {
+  background: rgba(31, 28, 44, 0.22);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.contact-container h2 {
+  font-size: 36px;
+  margin-bottom: 32px;
+  text-align: center;
+  color: #fff;
+}
+
+.form-group {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.required {
+  color: #cbbf8c;
+  margin-left: 4px;
+}
+
+.form-group input,
+.form-group textarea {
+  background: rgba(12, 12, 18, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #cbbf8c;
+  box-shadow: 0 0 0 3px rgba(203, 191, 140, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form .btn {
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* ========================= */
+/* THANK YOU MESSAGE */
+/* ========================= */
+.thank-you-message {
+  text-align: center;
+  padding: 40px 20px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.thank-you-message h3 {
+  font-size: 32px;
+  color: #cbbf8c;
+  margin-bottom: 16px;
+}
+
+.thank-you-message p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================= */
+/* TECH STACK */
+/* ========================= */
+.tech-section {
+  margin: 140px auto;
+  text-align: center;
+}
+
+.tech-section h2 {
+  font-size: 36px;
+  margin-bottom: 48px;
+  color: #fff;
+}
+
+.tech-box {
+  background: rgba(20, 20, 25, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 50px 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.tech-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+
+  /* Animation */
+  opacity: 0;
+  /* Animation is now triggered by the parent .in-view class */
+}
+
+.in-view .tech-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.tech-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-5px);
+  border-color: rgba(203, 191, 140, 0.5);
+}
+
+.tech-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  filter: brightness(0) invert(1); /* Forces any color to white */
+  opacity: 0.9;
+}
+
+.tech-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tech-type {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ========================= */
+/* JELLY ANIMATION */
+/* ========================= */
+@keyframes jellyFall {
+  0% { opacity: 0; transform: translateY(-150px) scale(0.7); }
+  30% { opacity: 1; transform: translateY(0) scale(1.25, 0.75); } /* Squash on impact */
+  45% { transform: translateY(-30px) scale(0.85, 1.15); } /* Rebound & stretch */
+  60% { transform: translateY(0) scale(1.1, 0.9); } /* Minor squash */
+  75% { transform: translateY(-10px) scale(0.95, 1.05); } /* Minor stretch */
+  100% { opacity: 1; transform: translateY(0) scale(1); } /* Settle */
+}

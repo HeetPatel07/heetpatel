@@ -11,17 +11,39 @@
 /* GLOBAL */
 /* ========================= */
 body {
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  background-color: #1f1c2c;
+  background-image:
+    /* White strips */
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 50px
+    ),
+    /* Yellow strips */
+    repeating-linear-gradient(
+      -45deg,
+      rgba(203, 191, 140, 0.05) 0px,
+      rgba(203, 191, 140, 0.05) 1px,
+      transparent 1px,
+      transparent 50px
+    ),
+    /* Original Gradient base */
+    linear-gradient(135deg, #1f1c2c, #928dab);
+  background-attachment: fixed;
   font-family: "Inter", sans-serif;
   color: white;
-  
 }
 
 #about,
-#tech,
 #projects,
 #contact {
   scroll-margin-top: 150px;
+}
+
+#techstack {
+  scroll-margin-top: 250px;
 }
 /* ========================= */
 /* CONTAINER */
@@ -152,17 +174,6 @@ body {
 /* TECH STACK */
 /* ========================= */
 
-.tech-placeholder {
-  height: 400px;
-  margin: 160px auto;
-  max-width: 1200px;
-
-  border-radius: 20px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-
 /* ========================= */
 /* HERO */
 /* ========================= */
@@ -243,6 +254,16 @@ body {
   grid-template-columns: var(--rail-col) 1fr;
   align-items: flex-start;
   position: relative;
+
+  /* Initial state for animation */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.timeline-row.show-project {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ========================= */
@@ -422,16 +443,6 @@ body {
 
 
 
-/* ========================= */
-/* ANIMATION */
-/* ========================= */
-@keyframes heartbeat {
-  0%   { transform: translateX(-50%) scale(1); }
-  25%  { transform: translateX(-50%) scale(1.15); }
-  40%  { transform: translateX(-50%) scale(1); }
-  60%  { transform: translateX(-50%) scale(1.1); }
-  100% { transform: translateX(-50%) scale(1); }
-}
 /* ========================= */
 /* LOADING DOTS (VISIBLE + CLEAN) */
 /* ========================= */
