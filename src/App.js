@@ -4,6 +4,28 @@ import githubIcon from "./assets/icons/github.svg";
 import mailIcon from "./assets/icons/minutemailer.svg";
 import linkedinIcon from "./assets/icons/linkedin.svg";
 
+const techStack = [
+  { name: "Java", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/java.svg" },
+  { name: "Python", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" },
+  { name: "JavaScript", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg" },
+  { name: "C", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/c.svg" },
+  { name: "C++", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cplusplus.svg" },
+  { name: "R", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/r.svg" },
+  { name: "Bash", type: "Scripting", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/gnubash.svg" },
+  { name: "React", type: "Frontend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/react.svg" },
+  { name: "Flask", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/flask.svg" },
+  { name: "Node.js", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nodedotjs.svg" },
+  { name: "Spring Boot", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/springboot.svg" },
+  { name: "Django", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/django.svg" },
+  { name: "Azure", type: "Cloud", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftazure.svg" },
+  { name: "AWS", type: "Cloud", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonaws.svg" },
+  { name: "Docker", type: "DevOps", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg" },
+  { name: "Kubernetes", type: "DevOps", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kubernetes.svg" },
+  { name: "SQL", type: "Database", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mysql.svg" },
+  { name: "MongoDB", type: "Database", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mongodb.svg" },
+  { name: "Power BI", type: "Analytics", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftpowerbi.svg" },
+  { name: "IBM SPSS", type: "Analytics", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/ibm.svg" },
+];
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -64,29 +86,6 @@ function App() {
       console.error("Error submitting form:", error);
     }
   };
-
-  const techStack = [
-    { name: "Java", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/java.svg" },
-    { name: "Python", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" },
-    { name: "JavaScript", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg" },
-    { name: "C", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/c.svg" },
-    { name: "C++", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cplusplus.svg" },
-    { name: "R", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/r.svg" },
-    { name: "Bash", type: "Scripting", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/gnubash.svg" },
-    { name: "React", type: "Frontend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/react.svg" },
-    { name: "Flask", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/flask.svg" },
-    { name: "Node.js", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nodedotjs.svg" },
-    { name: "Spring Boot", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/springboot.svg" },
-    { name: "Django", type: "Backend", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/django.svg" },
-    { name: "Azure", type: "Cloud", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftazure.svg" },
-    { name: "AWS", type: "Cloud", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazonaws.svg" },
-    { name: "Docker", type: "DevOps", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/docker.svg" },
-    { name: "Kubernetes", type: "DevOps", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kubernetes.svg" },
-    { name: "SQL", type: "Database", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mysql.svg" },
-    { name: "MongoDB", type: "Database", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mongodb.svg" },
-    { name: "Power BI", type: "Analytics", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftpowerbi.svg" },
-    { name: "IBM SPSS", type: "Analytics", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/ibm.svg" },
-  ];
 
   return (
   
@@ -307,7 +306,7 @@ function App() {
                 className="social-box"
                 aria-label="LinkedIn"
               >
-               <img src={linkedinIcon} alt="GitHub" />
+               <img src={linkedinIcon} alt="LinkedIn" />
               </a>
 
               <a

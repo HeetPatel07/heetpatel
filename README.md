@@ -34,8 +34,9 @@ It correctly bundles React in production mode and optimizes the build for the be
 ## 🌐 Deployment
 
 This portfolio is deployed and can be viewed live.
+This portfolio is deployed on Vercel and can be viewed live here:
 
-*(Add your live link here)*
+[**View Live Portfolio**](https://your-project-name.vercel.app)
 
 ## 📬 Contact
 
