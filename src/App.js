@@ -5,7 +5,7 @@ import mailIcon from "./assets/icons/minutemailer.svg";
 import linkedinIcon from "./assets/icons/linkedin.svg";
 
 const techStack = [
-  { name: "Java", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/java.svg" },
+  { name: "Java", type: "Language", url: "https://www.vectorlogo.zone/logos/java/java-ar21.svg" },
   { name: "Python", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" },
   { name: "JavaScript", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/javascript.svg" },
   { name: "C", type: "Language", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/c.svg" },
