@@ -490,6 +490,58 @@ function App() {
     </div>
   </div>
 
+  {/* EVENT 4 */}
+  <div className="timeline-row">
+    <div className="timeline-marker">
+      <span className="timeline-dot" />
+    </div>
+
+    <div className="timeline-content">
+      <div className="timeline-card">
+        <h3>Backend Event Monitoring</h3>
+        <h4>EventSync</h4>
+
+        <p>
+          EventSync is a backend event monitoring service that ingests categorized logs and synchronizes updates to clients in near real time. The notification layer is intentionally decoupled, allowing the polling mechanism to be replaced with email, webhooks, or other delivery channels for real-world production use.
+        </p>
+
+        <div className="timeline-skills">
+          <span>AWS</span>
+          <span>Backend</span>
+          <span>Webhooks</span>
+          <span>Real-time</span>
+          <span>Node.js</span>
+          <span>Docker</span>
+          <span>Event Monitoring</span>
+        </div>
+
+        <div className="timeline-links">
+          <a
+            href="http://18.220.250.180:5000/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Live Demo
+          </a>
+        </div>
+
+        <div className="timeline-preview image-preview-container">
+          <a 
+            href="http://18.220.250.180:5000/" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="project-preview-link"
+          >
+            <img src="/Event.png" alt="EventSync Preview" className="project-img" />
+            <div className="project-overlay">
+              <span>Open Website</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   {/* FINAL */}
   <div className="timeline-row timeline-final">
     <div className="timeline-marker">
