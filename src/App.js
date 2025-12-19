@@ -92,7 +92,7 @@ function App() {
 <>
       <nav className="navbar">
     <div className="nav-inner">
-      <a href="#about" className="logo-link" aria-label="Go to About section">
+      <a href="#hero" className="logo-link" aria-label="Go to Home">
         <h2 className="logo">
           HE<span>ET</span>
         </h2>
@@ -109,7 +109,7 @@ function App() {
 
      <div className="container">
 
-      <section className="hero">
+      <section className="hero" id="hero">
         <h1>Hi, I'm <span>Heet Patel</span></h1>
         <section className="terminal-hero">
             <div className="terminal-window">
