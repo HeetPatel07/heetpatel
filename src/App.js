@@ -473,11 +473,18 @@ function App() {
           </a>
         </div>
 
-        <div className="timeline-preview">
-          <iframe
-            src="http://18.220.250.180:8196/"
-            title="TreeDrive"
-          />
+        <div className="timeline-preview image-preview-container">
+          <a 
+            href="http://18.220.250.180:8196/" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="project-preview-link"
+          >
+            <img src="/img.png" alt="TreeDrive Preview" className="project-img" />
+            <div className="project-overlay">
+              <span>Open Website</span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
