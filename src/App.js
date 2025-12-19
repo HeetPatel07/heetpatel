@@ -510,7 +510,7 @@ function App() {
           <span>Backend</span>
           <span>Webhooks</span>
           <span>Real-time</span>
-          <span>Node.js</span>
+          <span>Flask</span>
           <span>Docker</span>
           <span>Event Monitoring</span>
         </div>
