@@ -24,8 +24,8 @@ body {
     /* Yellow strips */
     repeating-linear-gradient(
       -45deg,
-      rgba(203, 191, 140, 0.05) 0px,
-      rgba(203, 191, 140, 0.05) 1px,
+      rgba(168, 85, 247, 0.05) 0px,
+      rgba(168, 85, 247, 0.05) 1px,
       transparent 1px,
       transparent 50px
     ),
@@ -107,7 +107,7 @@ body {
 
 
 .navbar a:hover {
-  color: #cbbf8c;
+  color: #a855f7;
 }
 
 /* underline animation */
@@ -118,7 +118,7 @@ body {
   bottom: -6px;
   width: 0;
   height: 2px;
-  background: #cbbf8c;
+  background: #a855f7;
   transition: width 0.25s ease;
 }
 
@@ -128,7 +128,7 @@ body {
 
 /* active section */
 .navbar a.active {
-  color: #cbbf8c;
+  color: #a855f7;
 }
 
 .navbar a.active::after {
@@ -159,7 +159,7 @@ body {
 }
 
 .logo span {
-  color: #cbbf8c;
+  color: #a855f7;
 }
 
 
@@ -203,7 +203,7 @@ body {
 
 
 .hero span {
-  color: #cbbf8c;
+  color: #a855f7;
 }
 
 .terminal-hero {
@@ -279,7 +279,7 @@ body {
   width: var(--dot);
   height: var(--dot);
   border-radius: 50%;
-  background: #cbbf8c;
+  background: #a855f7;
 
   position: absolute;
   left: 50%;
@@ -287,8 +287,8 @@ body {
   transform: translateX(-50%);
 
   box-shadow:
-    0 0 0 6px rgba(203,191,140,0.25),
-    0 0 14px rgba(203,191,140,0.35);
+    0 0 0 6px rgba(168, 85, 247, 0.25),
+    0 0 14px rgba(168, 85, 247, 0.35);
 }
 
 /* heartbeat */
@@ -364,14 +364,14 @@ body {
   font-weight: 600;
   text-decoration: none;
   color: #1f1c2c;
-  background: #cbbf8c;
+  background: #a855f7;
   transition: all 0.25s ease;
-  box-shadow: 0 6px 18px rgba(203,191,140,0.35);
+  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.35);
 }
 
 .timeline-links a:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(203,191,140,0.5);
+  box-shadow: 0 10px 28px rgba(168, 85, 247, 0.5);
 }
 
 .timeline-links a.secondary {
@@ -425,8 +425,8 @@ body {
 
 /* soften the final dot */
 .timeline-dot-final {
-  background: #cbbf8c;
-  box-shadow: 0 0 18px rgba(203, 191, 140, 0.6);
+  background: #a855f7;
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.6);
 }
 
 
@@ -655,12 +655,12 @@ body {
 }
 
 .about-link {
-  color: #cbbf8c;
+  color: #a855f7;
   text-decoration: none;
-  border-bottom: 1px solid rgba(203, 191, 140, 0.35);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.35);
 }
 .about-link:hover {
-  border-bottom-color: rgba(203, 191, 140, 0.75);
+  border-bottom-color: rgba(168, 85, 247, 0.75);
 }
 
 /* ACTION BUTTONS (links) */
@@ -693,9 +693,9 @@ body {
 }
 
 .btn-primary {
-  background: rgba(203, 191, 140, 0.95);
+  background: rgba(168, 85, 247, 0.95);
   color: rgba(31, 28, 44, 0.98);
-  border: 1px solid rgba(203, 191, 140, 0.35);
+  border: 1px solid rgba(168, 85, 247, 0.35);
 }
 
 .btn-ghost {
@@ -745,11 +745,11 @@ body {
 .social-box:hover {
   transform: translateY(-2px);
 
-  border-color: rgba(203, 191, 140, 0.6);
+  border-color: rgba(168, 85, 247, 0.6);
 
   box-shadow:
     0 6px 18px rgba(0, 0, 0, 0.35),
-    0 0 12px rgba(203, 191, 140, 0.25);
+    0 0 12px rgba(168, 85, 247, 0.25);
 }
 
 .social-box:active {
@@ -912,7 +912,7 @@ html {
 }
 
 .timeline-terminal__text {
-  color: rgba(203, 191, 140, 0.95);
+  color: rgba(168, 85, 247, 0.95);
   font-weight: 700;
 }
 
