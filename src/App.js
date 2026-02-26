@@ -27,6 +27,51 @@ const techStack = [
   { name: "IBM SPSS", type: "Analytics", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/ibm.svg" },
 ];
 
+const projects = [
+  {
+    category: "Software Engineering Foundations",
+    description: "Built a strong foundation in system design, testing strategies, version control, collaboration workflows, and structured problem solving through academic and team-based projects.",
+    skills: ["Software Engineering", "System Design", "Testing", "Version Control", "Team Collaboration"],
+    link: "https://techtitans-bookease-web.vercel.app",
+    linkText: "Live Demo",
+    previewType: "iframe",
+    previewUrl: "https://techtitans-bookease-web.vercel.app",
+    previewTitle: "BookEase"
+  },
+  {
+    category: "Learning Web Applications & APIs",
+    description: "Learned how web applications communicate with APIs, including endpoint design, request handling, JSON parsing, and error management using modern frontend tools.",
+    skills: ["React", "REST APIs", "JSON Parsing", "UI/UX", "Error Handling"],
+    link: "https://weather-app-c911e.web.app",
+    linkText: "Live Demo",
+    previewType: "iframe",
+    previewUrl: "https://weather-app-c911e.web.app",
+    previewTitle: "Weather App"
+  },
+  {
+    category: "Building Distributed Systems",
+    title: "TreeDrive — Personal OneDrive Clone",
+    description: "Designed and implemented a distributed cloud storage system using TCP socket programming, custom protocols, and multi-cloud deployment. Web server on AWS, metadata and storage on Azure.",
+    skills: ["Python Sockets", "TCP Networking", "Custom Protocols", "AWS", "Azure", "Distributed Systems"],
+    link: "https://github.com/HeetPatel07",
+    linkText: "Go to Repository",
+    previewType: "image",
+    previewUrl: "/img.png",
+    previewAlt: "TreeDrive Preview"
+  },
+  {
+    category: "Backend Event Monitoring",
+    title: "EventSync",
+    description: "EventSync is a backend event monitoring service that ingests categorized logs and synchronizes updates to clients in near real time. The notification layer is intentionally decoupled, allowing the polling mechanism to be replaced with email, webhooks, or other delivery channels for real-world production use.",
+    skills: ["AWS", "Backend", "Webhooks", "Real-time", "Flask", "Docker", "Event Monitoring"],
+    link: "http://18.220.250.180:5000/",
+    linkText: "Live Demo",
+    previewType: "image",
+    previewUrl: "/Event.png",
+    previewAlt: "EventSync Preview"
+  }
+];
+
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isTechVisible, setIsTechVisible] = useState(false);
@@ -342,205 +387,57 @@ function App() {
 
 
 <section className="timeline" id="projects">
+  <div className="timeline-header">
+    <h2>Projects</h2>
+    <h3>Everyone starts somewhere</h3>
+  </div>
 
+  {projects.map((project, index) => (
+    <div className="timeline-row" key={index}>
+      <div className="timeline-marker">
+        <span className="timeline-dot" />
+      </div>
 
+      <div className="timeline-content">
+        <div className="timeline-card">
+          <h3>{project.category}</h3>
+          {project.title && <h4>{project.title}</h4>}
 
-  {/* EVENT 1 */}
-  <div className="timeline-row">
-    <div className="timeline-marker">
-      <span className="timeline-dot" />
-    </div>
+          <p>{project.description}</p>
 
-    <div className="timeline-content">
-      <h2>Projects</h2>
-      <h3>Everyone starts somewhere</h3>
-    
-      <div className="timeline-card">
-        
-        <h4>Software Engineering Foundations</h4>
+          <div className="timeline-skills">
+            {project.skills.map((skill, sIndex) => (
+              <span key={sIndex}>{skill}</span>
+            ))}
+          </div>
 
-        <p>
-          Built a strong foundation in system design, testing strategies,
-          version control, collaboration workflows, and structured problem
-          solving through academic and team-based projects.
-        </p>
+          <div className="timeline-links">
+            <a href={project.link} target="_blank" rel="noreferrer">
+              {project.linkText}
+            </a>
+          </div>
 
-        <div className="timeline-skills">
-          <span>Software Engineering</span>
-          <span>System Design</span>
-          <span>Testing</span>
-          <span>Version Control</span>
-          <span>Team Collaboration</span>
-        </div>
-
-        <div className="timeline-links">
-          <a
-            href="https://techtitans-bookease-web.vercel.app"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Live Demo
-          </a>
-        </div>
-
-        <div className="timeline-preview">
-          <iframe
-            src="https://techtitans-bookease-web.vercel.app"
-            title="BookEase"
-          />
+          <div className={`timeline-preview ${project.previewType === 'image' ? 'image-preview-container' : ''}`}>
+            {project.previewType === "iframe" ? (
+              <iframe src={project.previewUrl} title={project.previewTitle} />
+            ) : (
+              <a 
+                href={project.link} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="project-preview-link"
+              >
+                <img src={project.previewUrl} alt={project.previewAlt} className="project-img" />
+                <div className="project-overlay">
+                  <span>{project.linkText === "Live Demo" ? "Open Website" : "View Repository"}</span>
+                </div>
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  {/* EVENT 2 */}
-  <div className="timeline-row">
-    <div className="timeline-marker">
-      <span className="timeline-dot" />
-    </div>
-
-    <div className="timeline-content">
-      <div className="timeline-card">
-        <h3>Learning Web Applications & APIs</h3>
-
-        <p>
-          Learned how web applications communicate with APIs, including endpoint
-          design, request handling, JSON parsing, and error management using
-          modern frontend tools.
-        </p>
-
-        <div className="timeline-skills">
-          <span>React</span>
-          <span>REST APIs</span>
-          <span>JSON Parsing</span>
-          <span>UI/UX</span>
-          <span>Error Handling</span>
-        </div>
-
-        <div className="timeline-links">
-          <a
-            href="https://weather-app-c911e.web.app"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Live Demo
-          </a>
-        </div>
-
-        <div className="timeline-preview">
-          <iframe
-            src="https://weather-app-c911e.web.app"
-            title="Weather App"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {/* EVENT 3 */}
-  <div className="timeline-row">
-    <div className="timeline-marker">
-      <span className="timeline-dot" />
-    </div>
-
-    <div className="timeline-content">
-      <div className="timeline-card">
-        <h3>Building Distributed Systems</h3>
-        <h4>TreeDrive — Personal OneDrive Clone</h4>
-
-        <p>
-          Designed and implemented a distributed cloud storage system using TCP
-          socket programming, custom protocols, and multi-cloud deployment.
-          Web server on AWS, metadata and storage on Azure.
-        </p>
-
-        <div className="timeline-skills">
-          <span>Python Sockets</span>
-          <span>TCP Networking</span>
-          <span>Custom Protocols</span>
-          <span>AWS</span>
-          <span>Azure</span>
-          <span>Distributed Systems</span>
-        </div>
-
-        <div className="timeline-links">
-          <a
-            href="http://18.220.250.180:8196/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Live Demo
-          </a>
-        </div>
-
-        <div className="timeline-preview image-preview-container">
-          <a 
-            href="http://18.220.250.180:8196/" 
-            target="_blank" 
-            rel="noreferrer" 
-            className="project-preview-link"
-          >
-            <img src="/img.png" alt="TreeDrive Preview" className="project-img" />
-            <div className="project-overlay">
-              <span>Open Website</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {/* EVENT 4 */}
-  <div className="timeline-row">
-    <div className="timeline-marker">
-      <span className="timeline-dot" />
-    </div>
-
-    <div className="timeline-content">
-      <div className="timeline-card">
-        <h3>Backend Event Monitoring</h3>
-        <h4>EventSync</h4>
-
-        <p>
-          EventSync is a backend event monitoring service that ingests categorized logs and synchronizes updates to clients in near real time. The notification layer is intentionally decoupled, allowing the polling mechanism to be replaced with email, webhooks, or other delivery channels for real-world production use.
-        </p>
-
-        <div className="timeline-skills">
-          <span>AWS</span>
-          <span>Backend</span>
-          <span>Webhooks</span>
-          <span>Real-time</span>
-          <span>Flask</span>
-          <span>Docker</span>
-          <span>Event Monitoring</span>
-        </div>
-
-        <div className="timeline-links">
-          <a
-            href="http://18.220.250.180:5000/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Live Demo
-          </a>
-        </div>
-
-        <div className="timeline-preview image-preview-container">
-          <a 
-            href="http://18.220.250.180:5000/" 
-            target="_blank" 
-            rel="noreferrer" 
-            className="project-preview-link"
-          >
-            <img src="/Event.png" alt="EventSync Preview" className="project-img" />
-            <div className="project-overlay">
-              <span>Open Website</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  ))}
 
   {/* FINAL */}
   <div className="timeline-row timeline-final">
