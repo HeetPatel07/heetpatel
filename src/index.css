@@ -11,6 +11,7 @@
 /* GLOBAL */
 /* ========================= */
 body {
+  overflow-x: hidden;
   background-color: #1f1c2c;
   background-image:
     /* White strips */
@@ -24,8 +25,8 @@ body {
     /* Yellow strips */
     repeating-linear-gradient(
       -45deg,
-      rgba(168, 85, 247, 0.05) 0px,
-      rgba(168, 85, 247, 0.05) 1px,
+      rgba(203, 191, 140, 0.05) 0px,
+      rgba(203, 191, 140, 0.05) 1px,
       transparent 1px,
       transparent 50px
     ),
@@ -107,7 +108,7 @@ body {
 
 
 .navbar a:hover {
-  color: #a855f7;
+  color: #cbbf8c;
 }
 
 /* underline animation */
@@ -118,7 +119,7 @@ body {
   bottom: -6px;
   width: 0;
   height: 2px;
-  background: #a855f7;
+  background: #cbbf8c;
   transition: width 0.25s ease;
 }
 
@@ -128,7 +129,7 @@ body {
 
 /* active section */
 .navbar a.active {
-  color: #a855f7;
+  color: #cbbf8c;
 }
 
 .navbar a.active::after {
@@ -159,7 +160,7 @@ body {
 }
 
 .logo span {
-  color: #a855f7;
+  color: #cbbf8c;
 }
 
 
@@ -203,7 +204,7 @@ body {
 
 
 .hero span {
-  color: #a855f7;
+  color: #cbbf8c;
 }
 
 .terminal-hero {
@@ -279,7 +280,7 @@ body {
   width: var(--dot);
   height: var(--dot);
   border-radius: 50%;
-  background: #a855f7;
+  background: #cbbf8c;
 
   position: absolute;
   left: 50%;
@@ -287,13 +288,55 @@ body {
   transform: translateX(-50%);
 
   box-shadow:
-    0 0 0 6px rgba(168, 85, 247, 0.25),
-    0 0 14px rgba(168, 85, 247, 0.35);
+    0 0 0 6px rgba(203, 191, 140, 0.25),
+    0 0 14px rgba(203, 191, 140, 0.35);
 }
 
 /* heartbeat */
 .timeline-dot-final {
   animation: heartbeat 2.2s ease-in-out infinite;
+}
+
+/* ========================= */
+/* TIMELINE HEADER */
+/* ========================= */
+.timeline-header {
+  background: linear-gradient(
+    135deg,
+    rgba(22, 20, 34, 0.98),
+    rgba(69, 64, 98, 0.98)
+  );
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  border-radius: 40px;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 30px 0;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+.timeline-header h2,
+.timeline-header h3 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: calc(var(--rail-col) + 14px); /* Aligns with original content place */
+  color: #fff;
+}
+
+.timeline-header h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.timeline-header h3 {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
 }
 
 /* ========================= */
@@ -364,14 +407,14 @@ body {
   font-weight: 600;
   text-decoration: none;
   color: #1f1c2c;
-  background: #a855f7;
+  background: #cbbf8c;
   transition: all 0.25s ease;
-  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 6px 18px rgba(203, 191, 140, 0.35);
 }
 
 .timeline-links a:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(168, 85, 247, 0.5);
+  box-shadow: 0 10px 28px rgba(203, 191, 140, 0.5);
 }
 
 .timeline-links a.secondary {
@@ -425,8 +468,8 @@ body {
 
 /* soften the final dot */
 .timeline-dot-final {
-  background: #a855f7;
-  box-shadow: 0 0 18px rgba(168, 85, 247, 0.6);
+  background: #cbbf8c;
+  box-shadow: 0 0 18px rgba(203, 191, 140, 0.6);
 }
 
 
@@ -655,12 +698,12 @@ body {
 }
 
 .about-link {
-  color: #a855f7;
+  color: #cbbf8c;
   text-decoration: none;
-  border-bottom: 1px solid rgba(168, 85, 247, 0.35);
+  border-bottom: 1px solid rgba(203, 191, 140, 0.35);
 }
 .about-link:hover {
-  border-bottom-color: rgba(168, 85, 247, 0.75);
+  border-bottom-color: rgba(203, 191, 140, 0.75);
 }
 
 /* ACTION BUTTONS (links) */
@@ -693,9 +736,9 @@ body {
 }
 
 .btn-primary {
-  background: rgba(168, 85, 247, 0.95);
+  background: rgba(203, 191, 140, 0.95);
   color: rgba(31, 28, 44, 0.98);
-  border: 1px solid rgba(168, 85, 247, 0.35);
+  border: 1px solid rgba(203, 191, 140, 0.35);
 }
 
 .btn-ghost {
@@ -745,11 +788,11 @@ body {
 .social-box:hover {
   transform: translateY(-2px);
 
-  border-color: rgba(168, 85, 247, 0.6);
+  border-color: rgba(203, 191, 140, 0.6);
 
   box-shadow:
     0 6px 18px rgba(0, 0, 0, 0.35),
-    0 0 12px rgba(168, 85, 247, 0.25);
+    0 0 12px rgba(203, 191, 140, 0.25);
 }
 
 .social-box:active {
@@ -912,7 +955,7 @@ html {
 }
 
 .timeline-terminal__text {
-  color: rgba(168, 85, 247, 0.95);
+  color: rgba(203, 191, 140, 0.95);
   font-weight: 700;
 }
 

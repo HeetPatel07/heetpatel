@@ -23,8 +23,7 @@ const techStack = [
   { name: "Kubernetes", type: "DevOps", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kubernetes.svg" },
   { name: "SQL", type: "Database", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mysql.svg" },
   { name: "MongoDB", type: "Database", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mongodb.svg" },
-  { name: "Power BI", type: "Analytics", url: "https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" },
-  { name: "IBM SPSS", type: "Analytics", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/ibm.svg" },
+  { name: "Power BI", type: "Analytics", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/ibm.svg" },
 ];
 
 const projects = [
