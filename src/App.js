@@ -23,7 +23,7 @@ const techStack = [
   { name: "Kubernetes", type: "DevOps", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kubernetes.svg" },
   { name: "SQL", type: "Database", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mysql.svg" },
   { name: "MongoDB", type: "Database", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mongodb.svg" },
-  { name: "Power BI", type: "Analytics", url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/ibm.svg" },
+  { name: "Power BI", type: "Analytics", url: "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" },
 ];
 
 const projects = [
@@ -385,12 +385,18 @@ function App() {
       </section>
 
 
-<section className="timeline" id="projects">
+<section id="projects" className="projects-section">
   <div className="timeline-header">
-    <h2>Projects</h2>
-    <h3>Everyone starts somewhere</h3>
+    <div className="timeline-header-content">
+      <div className="header-rail-gap" /> {/* Empty div to represent the rail column */}
+      <div className="header-text">
+        <h2>Projects</h2>
+        <h3>Everyone starts somewhere</h3>
+      </div>
+    </div>
   </div>
 
+<div className="timeline">
   {projects.map((project, index) => (
     <div className="timeline-row" key={index}>
       <div className="timeline-marker">
@@ -437,6 +443,7 @@ function App() {
       </div>
     </div>
   ))}
+</div>
 
   {/* FINAL */}
   <div className="timeline-row timeline-final">

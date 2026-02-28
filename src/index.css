@@ -10,6 +10,14 @@
 /* ========================= */
 /* GLOBAL */
 /* ========================= */
+:root {
+  --rail-col: 90px;
+}
+
+@media (max-width: 768px) {
+  :root { --rail-col: 50px; }
+}
+
 body {
   overflow-x: hidden;
   background-color: #1f1c2c;
@@ -228,7 +236,7 @@ body {
   --dot: 18px;
   --dot-radius: calc(var(--dot) / 2);
 
-  margin: 140px auto;
+  margin: 0 auto;
   max-width: 1200px;
   display: grid;
   row-gap: 140px;
@@ -241,8 +249,8 @@ body {
   position: absolute;
   left: calc(var(--rail-col) / 2 - var(--line-w) / 2);
 
-  /* 🔑 THIS IS THE IMPORTANT PART */
-  top: var(--dot-radius);
+  /* Starts cleanly at the top of the timeline container */
+  top: 0; 
   bottom: 0;
 
   width: var(--line-w);
@@ -303,41 +311,33 @@ body {
 }
 
 /* ========================= */
-/* TIMELINE HEADER */
+/* PROJECTS SECTION & BANNER */
 /* ========================= */
+.projects-section {
+  margin: 100px 0;
+}
+
 .timeline-header {
-  background: linear-gradient(
-    135deg,
-    rgba(22, 20, 34, 0.98),
-    rgba(69, 64, 98, 0.98)
-  );
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  border-radius: 40px;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding: 30px 0;
+  width: 100%;
+  padding: 20px 0;
+  margin-bottom: 60px;
   text-align: left;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   z-index: 2;
 }
 
 .timeline-header-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding-left: calc(var(--rail-col) + 14px); /* Aligns with original content place */
-}
-
-.timeline-header h2, .timeline-header h3 {
-  color: #fff;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: var(--rail-col) 1fr; /* Matches timeline row structure */
 }
 
 .timeline-header h2 {
   font-size: 48px;
   margin-bottom: 10px;
   font-weight: 800;
+  color: #fff;
 }
 
 .timeline-header h3 {
@@ -1010,13 +1010,12 @@ html {
 /* ========================= */
 @media (max-width: 768px) {
   .timeline {
-    --rail-col: 50px; /* Narrower rail for mobile */
     row-gap: 80px;
   }
 
   .timeline-header {
-    padding: 40px 0;
-    margin-bottom: 60px;
+    padding: 50px 0;
+    margin-bottom: 50px;
   }
 
   .timeline-header h2 { font-size: 32px; }
