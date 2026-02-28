@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "./App.css";
 import githubIcon from "./assets/icons/github.svg";
 import mailIcon from "./assets/icons/minutemailer.svg";
@@ -75,6 +75,84 @@ function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isTechVisible, setIsTechVisible] = useState(false);
   const techRef = useRef(null);
+
+  // --- SNAKE GAME LOGIC ---
+  const GRID_SIZE = 15;
+  const [gameActive, setGameActive] = useState(false);
+  const [snake, setSnake] = useState([{ x: 8, y: 8 }]);
+  const [food, setFood] = useState({ x: 5, y: 5 });
+  const [direction, setDirection] = useState("RIGHT");
+  const [gameOver, setGameOver] = useState(false);
+  const [score, setScore] = useState(0);
+  const lastProcessedDirectionRef = useRef("RIGHT");
+
+  const getRandomCoord = useCallback(() => ({
+    x: Math.floor(Math.random() * GRID_SIZE),
+    y: Math.floor(Math.random() * GRID_SIZE),
+  }), []);
+
+  const resetGame = () => {
+    setSnake([{ x: 8, y: 8 }]);
+    setFood(getRandomCoord());
+    setDirection("RIGHT");
+    setGameOver(false);
+    lastProcessedDirectionRef.current = "RIGHT";
+    setScore(0);
+    setGameActive(true);
+  };
+
+  useEffect(() => {
+    if (!gameActive || gameOver) return;
+
+    const moveSnake = () => {
+      const newSnake = [...snake];
+      const head = { ...newSnake[0] };
+
+      if (direction === "UP") head.y -= 1;
+      if (direction === "DOWN") head.y += 1;
+      if (direction === "LEFT") head.x -= 1;
+      if (direction === "RIGHT") head.x += 1;
+
+      // Collision Check
+      if (head.x < 0 || head.x >= GRID_SIZE || head.y < 0 || head.y >= GRID_SIZE || 
+          newSnake.some(s => s.x === head.x && s.y === head.y)) {
+        setGameOver(true);
+        return;
+      }
+
+      newSnake.unshift(head);
+
+      if (head.x === food.x && head.y === food.y) {
+        setScore(s => s + 1);
+        setFood(getRandomCoord());
+      } else {
+        newSnake.pop();
+      }
+      lastProcessedDirectionRef.current = direction;
+      setSnake(newSnake);
+    };
+
+    const gameLoop = setInterval(moveSnake, 250);
+    return () => clearInterval(gameLoop);
+  }, [gameActive, gameOver, snake, direction, food, getRandomCoord]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!gameActive) return;
+      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault();
+      }
+      const lastDir = lastProcessedDirectionRef.current;
+      if (e.key === "ArrowUp" && lastDir !== "DOWN") setDirection("UP");
+      if (e.key === "ArrowDown" && lastDir !== "UP") setDirection("DOWN");
+      if (e.key === "ArrowLeft" && lastDir !== "RIGHT") setDirection("LEFT");
+      if (e.key === "ArrowRight" && lastDir !== "LEFT") setDirection("RIGHT");
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [gameActive, direction]);
+  // --- END SNAKE GAME LOGIC ---
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -156,11 +234,54 @@ function App() {
       <section className="hero" id="hero">
         <h1>Hi, I'm <span>Heet Patel</span></h1>
         <section className="terminal-hero">
-            <div className="terminal-window">
-              <span className="terminal-text">
-                print(<span className="string">"Software Developer"</span>)
-              </span>
-              <span className="cursor">|</span>
+            <div className={`terminal-window ${gameActive ? 'game-mode' : ''}`}>
+              {!gameActive ? (
+                <div className="terminal-content-text">
+                  <div className="terminal-text-line">
+                    <span className="terminal-text">
+                      print(<span className="string">"Software Developer"</span>)
+                    </span>
+                    <span className="cursor">█</span>
+                  </div>
+                  <button className="game-trigger" onClick={resetGame}>
+                    [ Start Debugging ]
+                  </button>
+                </div>
+              ) : (
+                <div className="snake-game-container">
+                  <div className="game-header">
+                    <span>Score: {score}</span>
+                    {gameOver && <button onClick={resetGame}>Restart</button>}
+                    <button onClick={() => setGameActive(false)}>Exit</button>
+                  </div>
+                  <div className="game-grid">
+                    {Array.from({ length: GRID_SIZE * GRID_SIZE }).map((_, i) => {
+                      const x = i % GRID_SIZE;
+                      const y = Math.floor(i / GRID_SIZE);
+                      const isSnake = snake.some(s => s.x === x && s.y === y);
+                      const isFood = food.x === x && food.y === y;
+                      return (
+                        <div 
+                          key={i} 
+                          className={`game-cell ${isSnake ? 'snake' : ''} ${isFood ? 'food' : ''}`}
+                        />
+                      );
+                    })}
+                  </div>
+                  
+                  {/* Mobile D-Pad */}
+                  <div className="mobile-controls">
+                    <button className="control-btn up" onClick={() => lastProcessedDirectionRef.current !== "DOWN" && setDirection("UP")}>▲</button>
+                    <div className="control-row">
+                      <button className="control-btn left" onClick={() => lastProcessedDirectionRef.current !== "RIGHT" && setDirection("LEFT")}>◀</button>
+                      <button className="control-btn right" onClick={() => lastProcessedDirectionRef.current !== "LEFT" && setDirection("RIGHT")}>▶</button>
+                    </div>
+                    <button className="control-btn down" onClick={() => lastProcessedDirectionRef.current !== "UP" && setDirection("DOWN")}>▼</button>
+                  </div>
+
+                  {gameOver && <div className="game-over-overlay">BUG FOUND: GAME OVER</div>}
+                </div>
+              )}
             </div>
           </section>
         <p>A passionate developer learning, building, and growing through real systems.</p>
