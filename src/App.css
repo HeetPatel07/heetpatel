@@ -261,3 +261,24 @@ html {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+
+/* ========================= */
+/* RESPONSIVE OVERRIDES */
+/* ========================= */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 24px;
+  }
+  .contact-container h2 {
+    font-size: 28px;
+  }
+  .tech-box {
+    padding: 30px 15px;
+  }
+  .timeline-preview {
+    height: 300px;
+  }
+  .timeline-preview iframe {
+    transform: scale(0.4); /* Smaller scale for mobile */
+  }
+}
